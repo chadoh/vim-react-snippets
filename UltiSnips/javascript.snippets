@@ -37,15 +37,15 @@ import PropTypes from 'prop-types'
 
 class ${1:`!v expand('%:t:r')`} extends Component {
 	static propTypes = {
-		children: PropTypes.node,
-		className: PropTypes.string,
+		${2:children: PropTypes.node,
+		className: PropTypes.string,}
 	}
 
 	render() {
 		return (
-			<div>
-				$3
-			</div>
+			<${3:div}>
+				$0
+			</$3>
 		)
 	}
 }
@@ -57,17 +57,25 @@ snippet rfc "React Functional Component" b
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ${1:`!v expand('%:t:r')`} = (${3:{...props}}) => {
+const ${1:`!v expand('%:t:r')`} = ({ $2 }) => {
 	return (
-		<div>
-			$4
-		</div>
+		<${4:div}>
+			$0
+		</$4>
 	)
 }
 
-$1.defaultProps = {}
+$1.defaultProps = {$3}
 
-$1.propTypes = {}
+$1.propTypes = {`!p
+props = t[2]
+
+if props:
+  snip >> 1
+  for prop in props.split(', '):
+    snip += prop + ': PropTypes.any,'
+`
+}
 
 export default $1
 endsnippet
