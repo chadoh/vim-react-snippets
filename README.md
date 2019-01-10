@@ -4,7 +4,14 @@ A Vim snippet library for React in ES6. You may also want to check out [vim-es20
 
 Requires [UltiSnips](https://github.com/SirVer/ultisnips).
 
-![vim-react-snippets](http://i.imgur.com/ImgaW2k.gif)
+![vim-react-snippets](https://i.imgur.com/MXdHJRN.gif)
+
+This is a permanent fork of [epilande/vim-react-snippets](https://github.com/epilande/vim-react-snippets), tweaked to fit my (@chadoh's) preferences. Some changes from @epilande's version:
+
+* No semicolons at ends of lines
+* No empty constructor
+* No `function` keyword
+* No `styles` import
 
 ## Installation
 
@@ -12,10 +19,10 @@ Using [vim-plug](https://github.com/junegunn/vim-plug):
 
 ```vim
 " ES2015 code snippets (Optional)
-Plug 'epilande/vim-es2015-snippets'
+Plug 'chadoh/vim-es2015-snippets'
 
 " React code snippets
-Plug 'epilande/vim-react-snippets'
+Plug 'chadoh/vim-react-snippets'
 
 " Ultisnips
 Plug 'SirVer/ultisnips'
@@ -38,23 +45,26 @@ rfc<C-l>
 Will expand to
 
 ```javascript
-import React, { PropTypes } from 'react';
-import styles from './ListItem.css';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const ListItem = ({ ...props }) => (
-  <div className={styles.base}>
+const ListItem = ({  }) => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
 
-  </div>
-);
-
-ListItem.defaultProps = {
-};
+ListItem.defaultProps = {}
 
 ListItem.propTypes = {
-};
+}
 
-export default ListItem;
+export default ListItem
 ```
+
+Then use <kbd>ctrl</kbd>+<kbd>j</kbd> and <kbd>ctrl</kbd>+<kbd>k</kbd> to move between tabstops, as shown in the gif above. Learn more about this UltiSnips feature in [its README](https://github.com/SirVer/ultisnips).
 
 Check out [`UltiSnips/javascript.snippets`](UltiSnips/javascript.snippets) to see all snippets.
 
